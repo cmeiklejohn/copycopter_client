@@ -59,7 +59,7 @@ GEM
       rake (>= 0.8.7)
     gherkin (2.3.3)
       json (~> 1.4.6)
-    i18n (0.5.0)
+    i18n (0.6.0beta1)
     json (1.4.6)
     linecache (0.43)
     mail (2.2.14)
@@ -132,7 +132,7 @@ DEPENDENCIES
   aruba (~> 0.3.2)
   bourne
   cucumber (~> 0.10.0)
-  i18n
+  i18n (~> 0.6.0.beta1)
   json
   rails (~> 3.0.3)
   rake

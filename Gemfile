@@ -14,6 +14,6 @@ gem "aruba", "~> 0.3.2"
 gem "ruby-debug"
 gem "json"
 gem "thin"
-gem "i18n"
+gem "i18n", "~> 0.6.0.beta1"
 gem "appraisal", :require => false
 

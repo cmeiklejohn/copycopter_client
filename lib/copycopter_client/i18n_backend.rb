@@ -23,12 +23,17 @@ module CopycopterClient
     #
     # @return [Object] the translated key (usually a String)
     def translate(locale, key, options = {})
-      content = super(locale, key, options.merge(:fallback => true))
-      if content.respond_to?(:html_safe)
-        content.html_safe
-      else
-        content
+      result = catch(:exception) do
+        content = super(locale, key, options.merge(:fallback => true))
+
+        if content.respond_to?(:html_safe)
+          content.html_safe
+        else
+          content
+        end
       end
+
+      return_or_raise_error(result, options[:fallback])
     end
 
     # Returns locales availabile for this Copycopter project.
@@ -88,5 +93,15 @@ module CopycopterClient
     end
 
     attr_reader :cache
+
+    # On I18n version >= 0.6.0, this use to determine if we should raise the
+    # exception to archive the old behavior of the old version of gem or not.
+    def return_or_raise_error(result, fallback)
+      if result.respond_to?(:to_exception) && !fallback
+        raise result.to_exception
+      else
+        result
+      end
+    end
   end
 end
