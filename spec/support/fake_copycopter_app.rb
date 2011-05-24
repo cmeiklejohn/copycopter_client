@@ -4,9 +4,13 @@ require 'thin'
 
 class FakeCopycopterApp < Sinatra::Base
   def self.start
-    Thread.new do
+    fake_copycopter_pid = fork do
       Thin::Logging.silent = true
       Rack::Handler::Thin.run(self, :Port => port)
+    end
+
+    at_exit do
+      Process.kill(9, fake_copycopter_pid)
     end
   end
 
