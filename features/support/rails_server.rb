@@ -34,7 +34,7 @@ class RailsServer
       $stderr = StringIO.new
     end
 
-    require 'config/environment'
+    require File.expand_path('config/environment')
     require 'thin'
 
     if Rails::VERSION::MAJOR == 3
