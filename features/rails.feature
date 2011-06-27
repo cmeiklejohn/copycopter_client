@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: Using copycopter in a rails app
 
   Background:

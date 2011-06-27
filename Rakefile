@@ -10,8 +10,8 @@ require 'rspec/core/rake_task'
 require 'yard'
 
 desc 'Default: run the specs and features.'
-task :default => :spec do
-  system("rake -s appraisal cucumber;")
+task :default do
+  system("rake -s appraisal spec cucumber;")
 end
 
 desc 'Test the copycopter_client plugin.'

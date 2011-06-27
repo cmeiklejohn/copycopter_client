@@ -5,7 +5,7 @@ When "I generate a rails application" do
     subcommand = ''
   end
 
-  run_simple("rails _#{Rails::VERSION::STRING}_ #{subcommand} testapp")
+  run_simple("bundle exec rails #{subcommand} testapp")
   cd("testapp")
 
   if Rails::VERSION::MAJOR == 3
@@ -16,6 +16,8 @@ When "I generate a rails application" do
       gem "json"
     GEMS
   end
+
+  When "I reset Bundler environment variable"
 end
 
 When /^I configure the copycopter client with api key "([^"]*)"$/ do |api_key|

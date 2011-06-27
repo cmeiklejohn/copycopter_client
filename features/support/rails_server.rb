@@ -85,7 +85,7 @@ class RailsServer
   end
 
   def wait_until_responsive
-    20.times do
+    60.times do
       if responsive?
         return true
       else
