@@ -10,10 +10,10 @@ gem "sham_rack"
 gem "cucumber", "~> 0.10.0"
 gem "sinatra", :require => false
 gem "yard", :require => false
-gem "aruba", "~> 0.3.2"
-gem "ruby-debug"
+gem "ruby-debug", :platforms => :mri_18
+gem "ruby-debug19", :platforms => :mri_19
 gem "json"
 gem "thin"
 gem "i18n", "~> 0.6.0.beta1"
-gem "appraisal", :require => false
+gem "appraisal", "~> 0.3.5", :require => false
 
