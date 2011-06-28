@@ -3,15 +3,21 @@ require 'bundler/setup'
 require 'appraisal'
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
-require 'rake/gempackagetask'
+require 'rdoc/task'
+require 'rubygems/package_task'
 require 'cucumber/rake/task'
 require 'rspec/core/rake_task'
 require 'yard'
 
 desc 'Default: run the specs and features.'
-task :default do
+task :default => [:cleanup, 'appraisal:install'] do
   system("rake -s appraisal spec cucumber;")
+end
+
+desc 'cleanup temporary files in tmp/ directory'
+task :cleanup do
+  FileUtils.rm_rf('tmp')
+  FileUtils.mkdir('tmp')
 end
 
 desc 'Test the copycopter_client plugin.'
@@ -31,7 +37,7 @@ YARD::Rake::YardocTask.new do |t|
 end
 
 eval("$specification = begin; #{IO.read('copycopter_client.gemspec')}; end")
-Rake::GemPackageTask.new($specification) do |package|
+Gem::PackageTask.new($specification) do |package|
   package.need_zip = true
   package.need_tar = true
 end

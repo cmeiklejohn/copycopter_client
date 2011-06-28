@@ -8,7 +8,7 @@ end
 
 appraise "3.1" do
   gem "rails", "~> 3.1.0.beta1"
-  gem 'sass'
+  gem 'sass-rails'
   gem 'coffee-script'
   gem 'uglifier'
   gem 'jquery-rails'

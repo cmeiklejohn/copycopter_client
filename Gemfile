@@ -16,4 +16,5 @@ gem "json"
 gem "thin"
 gem "i18n", "~> 0.6.0.beta1"
 gem "appraisal", "~> 0.3.5", :require => false
+gem "rdoc"
 

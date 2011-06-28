@@ -17,7 +17,8 @@ When "I generate a rails application" do
     GEMS
   end
 
-  When "I reset Bundler environment variable"
+  reset_bundler_variables
+  run_simple("bundle install --local") if Rails::VERSION::MAJOR == 3
 end
 
 When /^I configure the copycopter client with api key "([^"]*)"$/ do |api_key|

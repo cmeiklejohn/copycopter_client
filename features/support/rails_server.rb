@@ -85,13 +85,14 @@ class RailsServer
   end
 
   def wait_until_responsive
-    60.times do
+    20.times do
       if responsive?
         return true
       else
         sleep(0.5)
       end
     end
+    stop
     raise "Couldn't connect to Rails application server at #{HOST}:#{@port}"
   end
 
